@@ -1,0 +1,13 @@
+<%- include('partials/head.ejs') %>
+    <%- include('partials/nav.ejs') %>
+        <% if (sneakers.length !=0){ %>
+            <% for( sneaker of sneakers ) { %>
+                <div class="sneaker">
+                    <img src="/<%= sneaker.image %>" alt="">
+                    <p>
+                        <%= sneaker.name %>
+                    </p>
+                </div>
+                <% } %>
+                    <% } %>
+                        <%- include('partials/footer.ejs') %>
