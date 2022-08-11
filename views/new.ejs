@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/newsneaker" method="post" enctype="multipart/form-data">
+        <label>Name of Sneaker</label>
+        <input type="text" id="name" name="name">
+        <label>Brand of Sneaker</label>
+        <input type="text" id="brand" name="brand">
+        <label>Color of Sneakers</label>
+        <input type="text" id="color" name="color">
+        <label for="gender">Men/Women</label>
+        <input type="radio" name="gender" id="men" value="0">Men
+        <input type="radio" name="gender" id="women" value="1">Women
+        <input type="file" name="file" id="file" required style="padding: 30px; color: RGB(15, 13, 53);">
+        <button type="submit">Submit Addition</button>
+    </form>
+</body>
+</html>

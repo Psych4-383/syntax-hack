@@ -1,0 +1,34 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/nav.ejs') %>
+<body>
+    <header>
+        <div class="header-text">
+            <p id="header-heading">Solace</p>
+            <p id="header-catchphrase">lace up and run your course.</p>
+        </div>
+        <i class="fa fa-solid fa-crown" id="crown"></i>
+    </header>
+
+    <div class="main">
+        <h2>Shop By Category</h2>
+        <div class="flex">
+            <div class="card" style="background-image: url('/img/man.jpg');"><div class="dark"><button onclick="location.href='/filter/men'">Men</button></div></div>
+            <div class="card" style="background-image: url('/img/woman.jpg');"><div class="dark"><button onclick="location.href='/filter/women'">Women</button></div></div>
+            <div class="card" style="background-image: url('/img/color.jpg');"><div class="dark"><button onclick="location.href='/filter/color'">By Color</button></div></div>
+            <div class="card" style="background-image: url('/img/brand.jpg');"><div class="dark"><button onclick="location.href='/filter/brand'">By Brand</button></div></div>
+        </div>
+    </div>
+    <script>
+        window.onload = () => {
+            document.querySelectorAll('.card').forEach(item => {
+                item.addEventListener('mouseover', event => {
+                    item.children[0].style.display='flex'
+                })
+                item.addEventListener('mouseout', ()=>{
+                    item.children[0].style.display='none'
+                })
+            })
+        }
+    </script>
+</body>
+<%- include('partials/footer.ejs') %>

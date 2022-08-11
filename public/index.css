@@ -1,0 +1,103 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f9d2;
+    color: #2d3319;
+}
+
+header {
+    background-color: #23395b;
+    color: #f3f9d2;
+    padding: 10% 20% 10% 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header p {
+    padding: 0px;
+    margin: 0px;
+}
+
+#header-heading {
+    font-size: 5em;
+    font-family: 'rubik dirt';
+}
+
+#header-catchphrase {
+    font-size: 1.5em;
+}
+
+#crown {
+    font-size: 5em;
+    color: #eeb560;
+}
+
+button {
+    padding: 0.7vw 1vw;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2em;
+    background-color: #258ea6;
+    color: #2d3319;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    background-color: black;
+    width: 20%;
+    margin: 20px auto;
+    height: 400px;
+    background-size: cover;
+}
+
+h1, h2, h3 {
+    font-family: 'rubik dirt';
+    font-weight: 400;
+    font-size: 3em;
+    text-align: center;
+}
+
+.card .dark {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000094;
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    background-color: #eeb560;
+}
+
+nav ul {
+    margin: 0px;
+    padding: 0px 5vw;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'rubik dirt';
+}
+
+nav ul li {
+    display: inline-block;
+    color: #2d3319;
+    padding: 20px;
+}
+
+nav ul a{
+    text-decoration: none;
+    font-size: 1.2em;
+}
