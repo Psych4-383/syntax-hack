@@ -1,13 +1,18 @@
 <%- include('partials/head.ejs') %>
     <%- include('partials/nav.ejs') %>
-        <% if (sneakers.length !=0){ %>
-            <% for( sneaker of sneakers ) { %>
-                <div class="sneaker">
-                    <img src="/<%= sneaker.image %>" alt="">
-                    <p>
-                        <%= sneaker.name %>
-                    </p>
-                </div>
+
+        <body>
+            <% if (sneakers.length !=0){ %>
+                <% for( sneaker of sneakers ) { %>
+                    <div class="sneaker">
+                        <img src="/<%= sneaker.image %>" alt="">
+                        <p>
+                            <%= sneaker.name %>
+                        </p>
+
+                        <p>HELLO </p>
+                    </div>
                 <% } %>
-                    <% } %>
-                        <%- include('partials/footer.ejs') %>
+            <% } %>
+        </body>
+    <%- include('partials/footer.ejs') %>

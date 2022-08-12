@@ -50,9 +50,10 @@ app.post('/newsneaker', upload.single('file'), (req, res)=> {
 
 app.get('/filter/:filter', async (req, res) => {
     filter = req.params.filter
-    console.log(await Sneaker.find({gender:false}))
     if (filter=='men'){
-        res.render('sneakers', {sneakers: await Sneaker.find({gender:false}), title: 'Solace | Sneakers for Men'})
+        sneakers = await Sneaker.find({gender:false});
+        console.log(sneakers)
+        res.render('sneakers', {sneakers: sneakers, title: 'Solace | Sneakers for Men'})
     } else if (filter=='women'){
         res.render('sneakers', {sneakers: await Sneaker.find({gender:true}), title: 'Solace | Sneakers for Women'})
     }
