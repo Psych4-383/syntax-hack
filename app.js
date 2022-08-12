@@ -29,25 +29,6 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Solace | Home' })
 })
 
-app.get('/newsneaker', (req, res) => {
-    res.render('new', { sizes: sizes, title: 'Solace | New Sneakers' })
-})
-
-app.post('/newsneaker', upload.single('file'), (req, res) => {
-    if (req.file) {
-        const sneaker = new Sneaker({
-            name: req.body.name,
-            brand: req.body.brand,
-            color: req.body.color,
-            gender: Boolean(parseInt(req.body.gender)),
-            image: req.file.filename
-        });
-        sneaker.save()
-            .then(() => { console.log('added sneaker type') })
-    }
-    res.redirect('/newsneakers')
-})
-
 app.get('/filter/:filter', async (req, res) => {
     filter = req.params.filter
     if (filter == 'men') {
@@ -59,7 +40,7 @@ app.get('/filter/:filter', async (req, res) => {
     } else if (filter == 'color') {
         paramColor = req.query.c
         if (paramColor) {
-            console.log(paramColor)
+
             sneakers = await Sneaker.find({ color: paramColor })
             res.render('sneakers', { sneakers: sneakers, title: 'Solace | ' + paramColor + ' Sneakers', filter: `Color(${paramColor})` })
         } else {
