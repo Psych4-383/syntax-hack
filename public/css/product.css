@@ -1,0 +1,60 @@
+.sneaker-detail {
+    font-size: 1.5em;
+}
+
+.sneaker-image {
+    margin-top: 20px;
+    width: 40vw;
+    height: 40vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sneaker {
+    width: fit-content;
+    margin: 10px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.4);
+}
+
+.sneaker:hover {
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.4);
+}
+
+.sneaker-main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0px auto;
+}
+
+.sneaker-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.sneaker-brand, .sneaker-color {
+    font-size: 20px;
+    margin: 0px;
+}
+
+.sneaker-price {
+    margin: 0px;
+    font-size: 2vw;
+    font-weight: bold;
+}
+.inline {
+    padding: 0 3vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 1.5em;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

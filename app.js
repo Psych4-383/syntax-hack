@@ -26,15 +26,15 @@ var upload = multer({
 })
 
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Solace | Home'})
+    res.render('index', { title: 'Solace | Home' })
 })
 
-app.get('/newsneaker', (req, res)=> {
-    res.render('new', {sizes: sizes, title: 'Solace | New Sneakers'})
+app.get('/newsneaker', (req, res) => {
+    res.render('new', { sizes: sizes, title: 'Solace | New Sneakers' })
 })
 
-app.post('/newsneaker', upload.single('file'), (req, res)=> {
-    if (req.file){
+app.post('/newsneaker', upload.single('file'), (req, res) => {
+    if (req.file) {
         const sneaker = new Sneaker({
             name: req.body.name,
             brand: req.body.brand,
@@ -43,20 +43,60 @@ app.post('/newsneaker', upload.single('file'), (req, res)=> {
             image: req.file.filename
         });
         sneaker.save()
-        .then(()=>{console.log('added sneaker type')})
+            .then(() => { console.log('added sneaker type') })
     }
     res.redirect('/newsneakers')
 })
 
 app.get('/filter/:filter', async (req, res) => {
     filter = req.params.filter
-    if (filter=='men'){
-        sneakers = await Sneaker.find({gender:false});
-        console.log(sneakers)
-        res.render('sneakers', {sneakers: sneakers, title: 'Solace | Sneakers for Men'})
-    } else if (filter=='women'){
-        res.render('sneakers', {sneakers: await Sneaker.find({gender:true}), title: 'Solace | Sneakers for Women'})
+    if (filter == 'men') {
+        sneakers = await Sneaker.find({ gender: false });
+        res.render('sneakers', { sneakers: sneakers, title: 'Solace | Sneakers for Men', filter: 'Gender (Men)' })
+    } else if (filter == 'women') {
+        sneakers = await Sneaker.find({ gender: true });
+        res.render('sneakers', { sneakers: sneakers, title: 'Solace | Sneakers for Women', filter: 'Gender (Women)' })
+    } else if (filter == 'color') {
+        paramColor = req.query.c
+        if (paramColor) {
+            console.log(paramColor)
+            sneakers = await Sneaker.find({ color: paramColor })
+            res.render('sneakers', { sneakers: sneakers, title: 'Solace | ' + paramColor + ' Sneakers', filter: `Color(${paramColor})` })
+        } else {
+            let colors = new Set()
+            sneakers = await Sneaker.find();
+            for (sneaker of sneakers) {
+                colors.add(sneaker.color);
+            }
+            res.render('choice', { title: 'Solace | Sort by Colour', colors: colors })
+        }
+    } else if (filter == 'brand') {
+        paramBrand = req.query.b
+        if (paramBrand) {
+            console.log(paramBrand)
+            sneakers = await Sneaker.find({ brand: paramBrand })
+            res.render('sneakers', { sneakers: sneakers, title: 'Solace |  Sneakers by ' + paramBrand, filter: `Brand(${paramBrand})` })
+        } else {
+            let brands = new Set()
+            sneakers = await Sneaker.find();
+            for (sneaker of sneakers) {
+                brands.add(sneaker.brand);
+            }
+            console.log(brands)
+            res.render('choice', { title: 'Solace | Sort by Brand', colors: false, brands: brands })
+        }
     }
+})
+
+app.get('/sneaker/:id', async (req, res)=> {
+    sneaker = await Sneaker.findOne({_id: req.params.id})
+    console.log(sneaker)
+    sneaker.click += 1;
+    sneaker.save()
+    .then(()=>{
+        console.log('click updated')
+    })
+    res.render('product', {title: `Solace | ${sneaker.name}`, sneaker:sneaker})
 })
 
 

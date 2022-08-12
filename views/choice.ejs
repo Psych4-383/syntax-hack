@@ -1,0 +1,52 @@
+<%- include('partials/head.ejs') %>
+    <%- include('partials/nav.ejs') %>
+        <link rel="stylesheet" href="/css/sneaker.css">
+        <style>
+            .styled {
+                display: flex;
+                width: fit-content;
+                margin: 0px auto;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.635);
+            }
+
+            button {
+                margin: 2vw;
+            }
+
+            .colors button {
+                border-radius: 50%;
+                padding: 1.5vw;
+                border: 2px solid white;
+            }
+
+            .brands button {
+                background-color: #f3f9d2;
+                border-radius: 5px;
+            }
+        </style>
+
+        <body>
+            <div class="main">
+                <% if (colors) { %>
+                    <h2>Choose Colour</h2>
+                    <div class="colors styled">
+                        <% for( color of colors ) { %>
+                            <button style="background-color: <%= color %>;"
+                                onclick="location.href='/filter/color?c=<%= color %>'"></button>
+                            <% } %>
+                    </div>
+                    <% } else if (brands.size!=0) { %>
+                        <h2>Choose Brand</h2>
+                        <div class="brands styled">
+                            <% for ( brand of brands ) { %>
+                                <button onclick="location.href='/filter/brand?b=<%= brand %>'">
+                                    <%= brand %>
+                                </button>
+                                <% } %>
+                        </div>
+                        <% } %>
+            </div>
+        </body>
+        <%- include('partials/footer.ejs') %>

@@ -50,6 +50,7 @@ button {
 .flex {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -57,6 +58,7 @@ button {
     width: 20%;
     margin: 20px auto;
     height: 400px;
+    min-width: 10% ;
     background-size: cover;
 }
 

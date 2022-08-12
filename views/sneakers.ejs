@@ -1,18 +1,28 @@
 <%- include('partials/head.ejs') %>
     <%- include('partials/nav.ejs') %>
+    <link rel="stylesheet" href="/css/sneaker.css">
 
         <body>
-            <% if (sneakers.length !=0){ %>
-                <% for( sneaker of sneakers ) { %>
-                    <div class="sneaker">
-                        <img src="/<%= sneaker.image %>" alt="">
-                        <p>
-                            <%= sneaker.name %>
-                        </p>
-
-                        <p>HELLO </p>
-                    </div>
-                <% } %>
+            <% if (filter) { %>
+                <h2>Filter applied: <%= filter %></h2>
             <% } %>
+            <div class="sneaker-main">
+                <% if (sneakers.length !=0){ %>
+                    <% for( sneaker of sneakers ) { %>
+                        <div class="sneaker" onclick="location.href = '/sneaker/<%= sneaker.id %>'">
+                            <div class="sneaker-detail sneaker-image" style="background-image: url('/<%= sneaker.image %>');">
+                            </div>
+                            <p class="sneaker-name sneaker-detail">
+                                <%= sneaker.name %>
+                            </p>
+                            <div class="inline">
+                                <p class="sneaker-brand sneaker-detail"><%= sneaker.brand %> </p>
+                                <p class="sneaker-color sneaker-detail"><%= sneaker.color %> </p>
+                                <p class="sneaker-price sneaker-detail">₹<%= sneaker.price %> </p>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% } %>
+            </div>
         </body>
-    <%- include('partials/footer.ejs') %>
+        <%- include('partials/footer.ejs') %>

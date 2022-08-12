@@ -8,6 +8,10 @@ const sneakerSchema = new Schema({
   gender: Boolean,
   price: Number,
   image: String,
+  click: {
+    type: Number,
+    default: 0
+  }
 });
 
 const Sneaker = mongoose.model("Sneaker", sneakerSchema);

@@ -1,0 +1,28 @@
+<%- include('partials/head.ejs') %>
+    <%- include('partials/nav.ejs') %>
+        <link rel="stylesheet" href="/css/product.css">
+
+        <body>
+            <div class="product">
+                <div class="sneaker-detail sneaker-image" style="background-image: url('/<%= sneaker.image %>');">
+                </div>
+
+                <div class="inline">
+                    <p class="sneaker-name sneaker-detail">
+                        <%= sneaker.name %>
+                    </p>
+                    <p class="sneaker-brand sneaker-detail">
+                        <%= sneaker.brand %>
+                    </p>
+                    <p class="sneaker-color sneaker-detail">
+                        <%= sneaker.color %>
+                    </p>
+                    <p class="sneaker-color sneaker-detail">
+                        For <%= sneaker.gender ? 'Women' : 'Men' %>
+                    </p>
+                    <p class="sneaker-price sneaker-detail">₹<%= sneaker.price %>
+                    </p>
+                </div>
+            </div>
+        </body>
+        <%- include('partials/footer.ejs') %>
